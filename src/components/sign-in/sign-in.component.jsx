@@ -5,7 +5,11 @@ import CustomButton from '../custom-button/custom-button.component'
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
-import './sign-in.styles.scss'
+import {
+ SignInContainer,
+ SignInTitle,
+ ButtonsBarContainer,
+} from './sign-in.styles'
 
 class SignIn extends React.Component {
  constructor(props) {
@@ -24,52 +28,49 @@ class SignIn extends React.Component {
 
   try {
    await auth.signInWithEmailAndPassword(email, password)
-   this.state({ email: '', password: '' })
+   this.setState({ email: '', password: '' })
   } catch (error) {
-   console.log('error in sign-in.component', error.message)
+   console.log(error)
   }
  }
 
  handleChange = (event) => {
-  const { name, value } = event.target
+  const { value, name } = event.target
 
   this.setState({ [name]: value })
  }
 
  render() {
   return (
-   <div className='sign-in'>
-    <h2>I already have an account</h2>
+   <SignInContainer>
+    <SignInTitle>I already have an account</SignInTitle>
     <span>Sign in with your email and password</span>
 
     <form onSubmit={this.handleSubmit}>
      <FormInput
       name='email'
       type='email'
-      label='email'
-      handChange={this.handleChange}
+      handleChange={this.handleChange}
       value={this.state.email}
+      label='email'
       required
-     ></FormInput>
-
+     />
      <FormInput
       name='password'
       type='password'
-      label='password'
       value={this.state.password}
-      handChange={this.handleChange}
+      handleChange={this.handleChange}
+      label='password'
       required
-     ></FormInput>
-
-     <div className='buttons'>
-      <CustomButton type='submit'>SIGN IN</CustomButton>
+     />
+     <ButtonsBarContainer>
+      <CustomButton type='submit'> Sign in </CustomButton>
       <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-       {' '}
-       SIGN IN WITH GOOGLE
+       Sign in with Google
       </CustomButton>
-     </div>
+     </ButtonsBarContainer>
     </form>
-   </div>
+   </SignInContainer>
   )
  }
 }
