@@ -67,6 +67,18 @@ export const convertCollectionsSnapshotToMap = (collections) => {
  }, {})
 }
 
+//"mimicking" functionality for User.Auth.
+export const getCurrentUser = () => {
+ //Promise for Redux Saga (Promise oriented solution)
+ return new Promise((resolve, reject) => {
+  //firebases method to check userAuth. status
+  const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+   unsubscribe()
+   resolve(userAuth)
+  }, reject)
+ })
+}
+
 firebase.initializeApp(config)
 
 export const auth = firebase.auth()

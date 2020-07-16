@@ -1,4 +1,6 @@
 import CartActionTypes from './cart.types'
+// მარტივი ვარიანტი SIGN_OUT-ის დროს CART- ის გასაწმენდად
+// import UserActionTypes from '../user/user.types'
 import { addItemToCart, removeItemFromCart } from './cart.utils'
 
 const INITIAL_STATE = {
@@ -30,6 +32,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
      (cartItem) => cartItem.id !== action.payload.id
     ),
    }
+  case CartActionTypes.CLEAR_CART:
+   return {
+    ...state,
+    hidden: true,
+    cartItems: [],
+   }
+  // case UserActionTypes.SIGN_OUT_SUCCESS:
+  //  return {
+  //   ...state,
+  //   hidden: true,
+  //   cartItems: [],
+  //  }
   default:
    return state
  }
