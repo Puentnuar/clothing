@@ -4,6 +4,7 @@
 #### Features
 
 1. React Components
+2. React Router
 2. Redux / Redux Saga
 3. yarn
 4. firebase
