@@ -1,3 +1,15 @@
+# Clothing
+#### Clothing is clothing-shopping-like e-commerce site where users can register, add cloth to a “wishlist.”, and buy it useing card.
+
+#### Features
+
+1. React Components
+2. Redux / Redux Saga
+3. yarn
+4. firebase
+5. CSS in React
+6. online shopping
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
